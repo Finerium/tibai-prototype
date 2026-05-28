@@ -1,0 +1,40 @@
+@import "tailwindcss";
+@import "./tiba-landing.css";
+@import "./tiba-app.css";
+@config "../../tailwind.config.ts";
+
+/* ============================================================
+   Global base. Both surfaces scope their own tokens and styles
+   under .tiba-landing / .tiba-app; this layer only sets the page
+   default and the Lenis smooth-scroll requirements.
+   ============================================================ */
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  /* warm off-white default (landing surface); app surfaces paint over it */
+  background: #f4f1ea;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* ---- Lenis smooth scroll (targets <html>, must stay global) ---- */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: clip;
+}
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
